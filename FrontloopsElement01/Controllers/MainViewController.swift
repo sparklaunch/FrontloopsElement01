@@ -44,8 +44,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         self.negativeLabel.isUserInteractionEnabled = true
         self.neutralLabel.isUserInteractionEnabled = true
         self.positiveLabel.addGestureRecognizer(self.positiveTap!)
-        self.negativeLabel.addGestureRecognizer(negativeTap!)
-        self.neutralLabel.addGestureRecognizer(neutralTap!)
+        self.negativeLabel.addGestureRecognizer(self.negativeTap!)
+        self.neutralLabel.addGestureRecognizer(self.neutralTap!)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -65,6 +65,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         default:
             let alert: UIAlertController = UIAlertController(title: "Error", message: "Tab index out of range", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Okay",  style: UIAlertAction.Style.default, handler: nil))
+            textField.text = ""
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -110,4 +111,3 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         self.descriptionLabel.text = text
     }
 }
-
